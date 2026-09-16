@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+/* 1. HAPUS BATANG SCROLLBAR DI SELURUH APLIKASI TAPI TETAP BISA DI-SCROLL */
+/* Kunci: overscroll-behavior-y none mencegah rubber-band bounce / bergoyang saat scroll mentok ke atas */
+html {
+  scrollbar-width: none !important; /* Firefox */
+  -ms-overflow-style: none !important; /* IE / Edge */
+  -webkit-text-size-adjust: 100% !important;
+  text-size-adjust: 100% !important;
+  overflow-x: clip;
+  overscroll-behavior-x: none !important;
+  overscroll-behavior-y: none !important;
+  overscroll-behavior: none !important;
+  touch-action: pan-y !important;
+}
+
+body {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  overflow-x: clip;
+  overscroll-behavior-x: none !important;
+  overscroll-behavior-y: none !important;
+  overscroll-behavior: none !important;
+  touch-action: pan-y !important; /* Kunci: hanya izinkan scroll vertikal, matikan swipe-to-navigate / panah gesture kanan-kiri peramban */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Stabilitas mutlak sticky top bar agar kokoh & tidak bergoyang saat scroll mentok ke atas */
+.sticky-top-bar-stable {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 0 !important;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+  -webkit-backface-visibility: hidden !important;
+  backface-visibility: hidden !important;
+  isolation: isolate;
+  contain: layout style;
+}
+
+/* Sembunyikan batang scrollbar (Chrome, Safari, Opera, Edge) */
+::-webkit-scrollbar,
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+#root::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none !important;
+  width: 0px !important;
+  height: 0px !important;
+  background: transparent !important;
+}
+
+* {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+/* Larang seleksi teks di seluruh elemen konten umum & matikan menu context gambar browser */
+article, section, header, nav, footer, p, span, h1, h2, h3, h4, h5, h6, button, div, img, video {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  -webkit-touch-callout: none !important;
+}
+
+/* Matikan menu unduh/tekan-lama & seret gambar bawaan browser (Chrome Mobile / Safari / Samsung Internet) */
+img, video {
+  -webkit-touch-callout: none !important;
+  -webkit-user-drag: none !important;
+  user-drag: none !important;
+  pointer-events: auto;
+}
+
+/* Izinkan seleksi & pengetikan hanya pada input formulir agar pembuatan post tetap berjalan lancar */
+/* FONT-SIZE 16px KUNCI UNTUK MENCEGAH iOS SAFARI AUTO-ZOOM SAAT KLIK INPUT */
+input, textarea, select, [contenteditable="true"] {
+  font-size: 16px !important;
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+  user-select: text !important;
+  -webkit-touch-callout: default !important;
+}
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  /* 3-line clamp for magazine headline descriptions */
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+.custom-vibe-marker {
+  background: transparent;
+  border: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 2. PAPAN TEKS BERJALAN (RUNNING TEXT MARQUEE) */
+@keyframes tickerMarquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: tickerMarquee 110s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee:hover,
+.animate-marquee:active {
+  animation-play-state: paused;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.25s ease-out forwards;
+}
+

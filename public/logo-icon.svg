@@ -1,0 +1,14 @@
+<svg viewBox="0 0 120 120" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Navy Blue Arch #003B6D -->
+  <path
+    d="M 18 90 L 46 38 Q 60 16 74 38 L 102 90"
+    stroke="#003B6D"
+    stroke-width="21"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+  />
+  <!-- Vivid Orange Circle nestled inside the Arch #FF6D00 -->
+  <circle cx="60" cy="71" r="15" fill="#FF6D00" />
+</svg>
+

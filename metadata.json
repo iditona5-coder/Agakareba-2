@@ -1,0 +1,11 @@
+{
+  "name": "Remix Remix Remix Remix Kareba\u0027Ta",
+  "description": "Beritamu, Suaramu - Platform berbagi laporan situasi kota, video \u0026 foto warga, mood emoji, dan peta lokasi interaktif.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

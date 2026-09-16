@@ -1,0 +1,38 @@
+<svg viewBox="0 0 400 280" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&amp;display=swap');
+      .logo-vertical-wordmark {
+        font-family: 'Poppins', 'Century Gothic', 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 800;
+        font-size: 64px;
+        letter-spacing: -1.5px;
+      }
+    </style>
+  </defs>
+
+  <!-- Symbol Centered on Top -->
+  <g transform="translate(140, 25)">
+    <!-- Navy Blue Arch #003B6D -->
+    <path
+      d="M 18 90 L 46 38 Q 60 16 74 38 L 102 90"
+      stroke="#003B6D"
+      stroke-width="21"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      fill="none"
+    />
+    <!-- Orange Circle inside Arch #FF6D00 -->
+    <circle cx="60" cy="71" r="15" fill="#FF6D00" />
+  </g>
+
+  <!-- Wordmark Text Centered Below: "Aga" (Navy) + "Kareba" (Orange) -->
+  <text
+    x="200"
+    y="200"
+    text-anchor="middle"
+    class="logo-vertical-wordmark"
+  >
+    <tspan fill="#003B6D">Aga</tspan><tspan fill="#FF6D00">Kareba</tspan>
+  </text>
+</svg>

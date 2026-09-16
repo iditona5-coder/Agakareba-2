@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, shrink-to-fit=no, viewport-fit=cover" />
+    <title>Kareba'Ta - Beritamu, Suaramu</title>
+    <meta name="description" content="Kareba'Ta - Beritamu, Suaramu. Platform berbagi kabar situasi kota, video & foto warga, mood emoji, dan peta interaktif." />
+    <link rel="icon" type="image/svg+xml" href="/logo-icon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script>
+      // Blokir gesture zoom Safari & Ctrl+Wheel zoom di desktop sedini mungkin tanpa mengganggu scroll
+      window.addEventListener('gesturestart', function(e) { e.preventDefault(); }, { passive: false });
+      window.addEventListener('gesturechange', function(e) { e.preventDefault(); }, { passive: false });
+      window.addEventListener('gestureend', function(e) { e.preventDefault(); }, { passive: false });
+      window.addEventListener('wheel', function(e) {
+        if (e.ctrlKey) {
+          e.preventDefault();
+        }
+      }, { passive: false });
+
+      // Matikan menu klik kanan / tekan lama (contextmenu) bawaan browser pada gambar & video
+      // agar tidak muncul popup "Buka gambar di tab baru", "Salin gambar", "Download gambar"
+      window.addEventListener('contextmenu', function(e) {
+        // Izinkan klik kanan hanya pada input teks / textarea untuk keperluan copy-paste teks
+        var tag = e.target && e.target.tagName ? e.target.tagName.toLowerCase() : '';
+        if (tag !== 'input' && tag !== 'textarea') {
+          e.preventDefault();
+          return false;
+        }
+      }, { passive: false });
+
+      // Matikan drag bawaan gambar/video agar tidak memicu drag-and-drop bawaan browser
+      window.addEventListener('dragstart', function(e) {
+        var tag = e.target && e.target.tagName ? e.target.tagName.toLowerCase() : '';
+        if (tag !== 'input' && tag !== 'textarea') {
+          e.preventDefault();
+          return false;
+        }
+      }, { passive: false });
+    </script>
+  </head>
+  <body class="bg-slate-100 text-slate-900 antialiased min-h-screen">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
